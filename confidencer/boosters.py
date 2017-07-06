@@ -1,9 +1,10 @@
+# This Python file uses the following encoding: utf-8
 """A file with a list of confidence boosters from which to choose randomly.
-sources: 
-    sepitajima.com/quotes-boost-confidence-courage-and-self-belief-tips/
-    https://daringtolivefully.com/self-esteem-quotes
-    https://www.codeofliving.com/life/quotes/27-powerful-quotes-to-boost-your-self-confidence/
-    https://www.inc.com/jeff-haden/50-inspiring-motivational-quotes-to-increase-your-confidence.html
+
+    sources: 
+        https://daringtolivefully.com/self-esteem-quotes
+        https://www.codeofliving.com/life/quotes/27-powerful-quotes-to-boost-your-self-confidence/
+        https://www.inc.com/jeff-haden/50-inspiring-motivational-quotes-to-increase-your-confidence.html
 """
 
 BOOSTERS = [
