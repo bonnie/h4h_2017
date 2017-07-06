@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 """A simple server to deliver compliment texts on demand, using Twilio.
 
     This is an example project for Hacking for Humanity 2017.
@@ -5,26 +6,60 @@
     (c) 2017 Hackbright Academy
 """
 
-from twilio.rest import Client
+# for getting the flask secret from the environment
+import os
+
+# to get a random message
+from random import choice
+
+# for the web server
+from flask import Flask, render_template, request, flash, redirect
+
+# list of confidence boosters
+from boosters import BOOSTERS
+
+# function to send an sms message
+from twilio_calls import send_sms
 
 
-# a Client constructor without account and token parameters will look for 
-# TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN variables inside the current 
-# environment.
-# 
-# These are added to the environment by sourcing a secrets.sh file (not included
-# in this repo because contents are a secret!)
-# 
-# The secrets.sh file contents look like this: 
-# 
-#   export TWILIO_ACCOUNT_SID="xxxxxxx"
-#   export TWILIO_AUTH_TOKEN="xxxxxxx"
-# 
-# With the xxxxxxx replaced with the account and token generated from 
-# https://www.twilio.com/try-twilio 
-# 
-# Then run 
-#   source secrets.sh
-# from the command line to bring the environment variables into the environment.
+# instantiate the flask app
+app = Flask(__name__)
 
-client = Client()
+# add a secret key to be able to use flash
+app.secret_key = os.environ.get("FLASK_SECRET")
+
+
+# the "root" route
+@app.route("/")
+def print_home():
+    """Print the home page with a big button for a compliment."""
+
+    return render_template("index.html")
+
+
+@app.route("/confirmation")
+def send_message():
+    """Send the sms message and display a confirmation or error."""
+
+    msg = choice(BOOSTERS)
+    phone = request.args.get("phone")
+
+    # attempt to send the message
+    result = send_sms(msg, phone)
+
+    if result["success"]: 
+        # it worked! 
+        flash("Success! You should get a text message shortly.")
+
+    else:
+        # it did not work
+        flash("Couldn't sent the text message: {}".format(result["message"]))
+        flash("Here's a web message just for you: {}".format(msg))
+
+    return redirect("/")
+
+
+if __name__ == '__main__':
+    # if this is called directly
+
+    app.run(port="5050")
