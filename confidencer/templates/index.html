@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confidencer</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/index.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="content">
+        <h3>Confidence on Demand</h3>
+
+        {% for flash in get_flashed_messages() %}
+          <div class="alert" style="width:90%; margin:0 auto;">{{ flash }}</div>
+        {% endfor %}
+
+        <div class="boost-form">
+            <form action="/confirmation">
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" name="phone" type="text" placeholder="555-555-5555">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Text me a boost!">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
