@@ -1,0 +1,28 @@
+/* Styling for the confidencer app. */
+
+body {
+    width: 100%;
+    background-image: url("/static/images/balloons.jpg");
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.content {
+    width: 60%;
+    height: 80%;
+    margin: 80px auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.85;
+    text-align: center;
+}
+
+div.boost-form {
+    width: 40%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #9cf;
+}
