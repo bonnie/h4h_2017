@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>FindShelter</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            background: no-repeat fixed url("/static/peapods.jpg") center;
+            background-size: 100%;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Find The Nearest Food Shelter</h1>
+    <div>
+        Where are you?
+        <form action="/shelter">
+            <input name="address" type="text">
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
