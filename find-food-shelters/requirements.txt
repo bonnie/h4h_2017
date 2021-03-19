@@ -8,7 +8,7 @@ geocoder==1.23.1
 googlemaps==2.5.1
 idna==2.5
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 MarkupSafe==1.0
 ratelim==0.1.6
 requests==2.18.1
